@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  mediawiki:
+    image: mediawiki:latest
+    ports:
+      - "8082:80"
+    environment:
+      MEDIAWIKI_DB_HOST: db
+      MEDIAWIKI_DB_USER: mediawiki
+      MEDIAWIKI_DB_PASSWORD: mediawikipassword
+      MEDIAWIKI_DB_NAME: mediawiki
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_DATABASE: mediawiki
+      MYSQL_USER: mediawiki
+      MYSQL_PASSWORD: mediawikipassword
+      MYSQL_ROOT_PASSWORD: rootpassword
+volumes:
+  db_data:
+
